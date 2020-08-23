@@ -32,13 +32,17 @@ PC:
 	01 -> Segunda linha do codigo
 	10 -> Terceira linha do codigo
 	11 -> Quarta linha do codigo
+	
+OP:
+	
+	Tipo R -> OP = 01
 
 Exemplo:
 
 ADD $s2, $s0, $s1
 
-  	  00			0000				0001				0010		 00
- 	OP = 0			$s0			  		$s1					$s2		 funct = ADD
+  	  01			0000				0001				0010		 00
+ 	OP = 1			$s0			  		$s1					$s2		 funct = ADD
 */
 
 #include <iostream>
@@ -54,10 +58,10 @@ using namespace std;
 
 /* Casos Testes
  Tipo R            -> OP  RS   RT   RD  Funct     Decimal
- ADD $s2, $s0, $s1 -> 00 0000 0001 0010 00     -> 72
+ ADD $s2, $s0, $s1 -> 01 0000 0001 0010 00     -> 16456
  SUB $s5, $s3, $s4 -> 01 0011 0100 0101 01     -> 19733
- AND $s3, $s5, $s4 -> 10 0101 0100 0011 10 	   -> 38158
- OR  $s5, $s3, $s4 -> 11 0011 0100 0101 11 	   -> 52503
+ AND $s3, $s5, $s4 -> 01 0101 0100 0011 10 	   -> 21774
+ OR  $s5, $s3, $s4 -> 01 0011 0100 0101 11 	   -> 19735
  */
 
 void showReg(reg s[6]);
@@ -67,7 +71,7 @@ int main()
 	setlocale(LC_ALL, "Portuguese"); //Biblioteca para expressões em português
 
 	//Instruções   						 ADD  SUB	 AND	OR
-	int instruction[SIZE_INSTRUCTION] = {72, 19733, 38158, 72};
+	int instruction[SIZE_INSTRUCTION] = {16456, 19733, 21774, 19735};
 
 	//Variavel - PC
 	int PC = 0;
