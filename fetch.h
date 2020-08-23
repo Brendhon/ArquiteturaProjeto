@@ -129,12 +129,6 @@ void validation ()
 			(body.rt > 5) 	||
 			(body.rd > 5))
 		body.fault = true;
-	else if((body.op == body.funct) &&
-			(body.op == body.rs) 	&&
-			(body.op == body.rt)	&&
-			(body.op == body.rd)	&&
-			(body.op == 0))
-		body.fault = true;
 	else
 		body.fault = false;
 }
